@@ -46,10 +46,6 @@
 							"type": "DateTime"
 						}
 					}
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase",
-					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -66,16 +62,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Emp_source",
+						"referenceName": "EmpFile",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"lastModified",
-						"size",
-						"itemName"
+						"itemName",
+						"size"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
