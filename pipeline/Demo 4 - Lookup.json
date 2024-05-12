@@ -58,7 +58,7 @@
 							"Name": {
 								"type": "String",
 								"value": {
-									"value": "@activity('Get Last modified date').output.itemName",
+									"value": "@activity('Get Last modified date').output.lastModified",
 									"type": "Expression"
 								}
 							}
