@@ -55,8 +55,8 @@
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[dbo].[usp_UpdateLastExecutionDate]",
 						"storedProcedureParameters": {
-							"Name": {
-								"type": "String",
+							"ExecutionDate": {
+								"type": "DateTime",
 								"value": {
 									"value": "@activity('Get Last modified date').output.lastModified",
 									"type": "Expression"
