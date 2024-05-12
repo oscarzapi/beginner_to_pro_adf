@@ -16,16 +16,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Emp_source",
+						"referenceName": "EmpFile",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"lastModified",
-						"size",
 						"itemName"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -55,23 +55,15 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[dbo].[usp_LastLoadDate]",
-						"storedProcedureParameters": {
-							"Name": {
-								"type": "String",
-								"value": {
-									"value": "@activity('Get Last modified date').output.itemName",
-									"type": "Expression"
-								}
-							}
-						},
+						"sqlReaderQuery": "SELECT MAX(RECORDINSERTDATE) AS MAX_DATE  FROM [dbo].[AzureMetadataTest]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": true
 				}
 			},
 			{
@@ -88,7 +80,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@greaterOrEquals(\n    addhours(\n        formatDateTime(\n            activity('Get Last modified date').output.lastModified, 'o'), -4\n        ),\n        activity('Get Last execution').output.firstRow.ExecutionDate\n        )",
+						"value": "@greaterOrEquals(\n    addhours(\n        formatDateTime(\n            activity('Get Last modified date').output.lastModified, 'o'), -4\n        ),\n        activity('Get Last execution').output.firstRow.MAX_DATE\n        )",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
