@@ -20,7 +20,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"lastModified"
+						"lastModified",
+						"itemName"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -53,12 +54,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[dbo].[usp_UpdateLastExecutionDate]",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_LastLoadDate]",
 						"storedProcedureParameters": {
-							"ExecutionDate": {
-								"type": "DateTime",
+							"Name": {
+								"type": "String",
 								"value": {
-									"value": "@activity('Get Last modified date').output.lastModified",
+									"value": "@activity('Get Last modified date').output.itemName",
 									"type": "Expression"
 								}
 							}
@@ -69,7 +70,8 @@
 					"dataset": {
 						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
