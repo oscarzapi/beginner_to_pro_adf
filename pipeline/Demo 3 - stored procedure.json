@@ -46,6 +46,10 @@
 							"type": "DateTime"
 						}
 					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase",
+					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -67,7 +71,8 @@
 					},
 					"fieldList": [
 						"itemName",
-						"size"
+						"size",
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
