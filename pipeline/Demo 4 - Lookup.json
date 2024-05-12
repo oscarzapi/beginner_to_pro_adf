@@ -16,13 +16,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Emp_source",
+						"referenceName": "EmpFile",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"lastModified",
-						"size",
-						"itemName"
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -55,7 +53,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[dbo].[usp_LastLoadDate]",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_UpdateLastExecutionDate]",
 						"storedProcedureParameters": {
 							"Name": {
 								"type": "String",
