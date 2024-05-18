@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@utcnow('YYYY-MM-dd')",
+					"value": "@utcnow('yyyy-MM-dd')",
 					"type": "Expression"
 				},
 				"fileSystem": "destination"
