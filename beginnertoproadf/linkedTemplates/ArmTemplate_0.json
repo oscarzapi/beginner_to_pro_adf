@@ -101,7 +101,7 @@
 						"typeProperties": {
 							"functionName": "http_trigger",
 							"body": {
-								"name": "oscar"
+								"name": "oscar1"
 							},
 							"headers": {},
 							"method": "POST"
@@ -174,7 +174,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": {
-							"value": "@utcnow('YYYY-MM-dd')",
+							"value": "@utcnow('yyyy-MM-dd')",
 							"type": "Expression"
 						},
 						"fileSystem": "destination"
@@ -262,7 +262,7 @@
 								"formatSettings": {
 									"type": "DelimitedTextWriteSettings",
 									"quoteAllText": true,
-									"fileExtension": ".txt"
+									"fileExtension": ".parquet"
 								}
 							},
 							"enableStaging": false,
