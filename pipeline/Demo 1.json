@@ -16,18 +16,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".parquet"
 						}
 					},
 					"enableStaging": false,
@@ -36,38 +44,26 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ID",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "ID",
-									"type": "Int32",
-									"physicalType": "INT_32"
-								}
-							},
-							{
-								"source": {
 									"name": "FirstName",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "FirstName",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "LastName",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "LastName",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							}
 						],
@@ -80,13 +76,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureSqlTable",
+						"referenceName": "EmpFile",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Emp",
+						"referenceName": "EmpDestinationDataLake",
 						"type": "DatasetReference"
 					}
 				]

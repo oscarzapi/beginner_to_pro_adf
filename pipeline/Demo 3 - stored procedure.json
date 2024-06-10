@@ -66,16 +66,17 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Emp_source",
+						"referenceName": "EmpFile",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"lastModified",
+						"itemName",
 						"size",
-						"itemName"
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {

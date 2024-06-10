@@ -16,12 +16,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Emp_source",
+						"referenceName": "EmpFile",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"lastModified",
-						"size",
 						"itemName"
 					],
 					"storeSettings": {
@@ -71,7 +70,8 @@
 					"dataset": {
 						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
