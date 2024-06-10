@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"functionName": "http_trigger",
 					"body": {
-						"name": "oscar"
+						"name": "oscar1"
 					},
 					"method": "POST"
 				},
